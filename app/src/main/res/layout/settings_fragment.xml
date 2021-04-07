@@ -9,13 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="20"
-        android:paddingStart="20"
-        android:paddingLeft="20"
-        android:paddingTop="20"
-        android:paddingEnd="20"
-        android:paddingRight="20"
-        android:paddingBottom="20">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/settingsTitleLabel"
