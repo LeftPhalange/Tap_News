@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/forecastLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    tools:context=".ui.weather.WeatherFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="fill|top"
+        android:orientation="vertical"
+        android:padding="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/cityLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Atlanta, GA"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/rightNowLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Right now"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/conditionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:text="--°"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="24dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/next7DayLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:text="Next 7 days"
+            android:textColor="@android:color/secondary_text_light"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/daypartView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

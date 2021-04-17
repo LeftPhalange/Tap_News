@@ -1,14 +1,14 @@
-package com.ethanbovard.tapnews.ui.notifications;
+package com.ethanbovard.tapnews.ui.traffic;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NotificationsViewModel extends ViewModel {
+public class TrafficViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public NotificationsViewModel() {
+    public TrafficViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is notifications fragment");
     }

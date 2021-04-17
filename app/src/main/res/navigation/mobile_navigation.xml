@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.ethanbovard.tapnews.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_weather"
+        android:name="com.ethanbovard.tapnews.ui.weather.WeatherFragment"
+        android:label="@string/title_weather"
+        tools:layout="@layout/fragment_weather" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.ethanbovard.tapnews.ui.notifications.NotificationsFragment"
+        android:name="com.ethanbovard.tapnews.ui.traffic.TrafficFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
