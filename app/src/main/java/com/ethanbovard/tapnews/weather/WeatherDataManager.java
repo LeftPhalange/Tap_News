@@ -7,6 +7,8 @@ import com.ethanbovard.tapnews.models.weatherApi.DailyForecastModel;
 import com.ethanbovard.tapnews.models.weatherApi.DaypartModel;
 import com.ethanbovard.tapnews.models.weatherApi.ObservationsModel;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -22,7 +24,7 @@ public class WeatherDataManager {
     public WeatherDataManager(double[] coordinates) throws Exception {
         Log.v(TAG, "started WeatherDataManager");
         WeatherConditions conditions = populateWeatherConditions();
-        displayLocation = new Location("New York City", conditions, null);
+        displayLocation = new Location("--", conditions, null);
     }
     public WeatherConditions populateWeatherConditions () throws Exception {
         WeatherConditions conditions = new WeatherConditions();
@@ -30,6 +32,7 @@ public class WeatherDataManager {
         ObservationsModel model = (ObservationsModel)JSONManager.Deserialize(new URL(String.format(baseObsUrl, finalCoords, API_KEY)), ObservationsModel.class);
         conditions.conditionText = model.wxPhraseShort;
         conditions.temperature = model.temperature;
+        conditions.conditionIcon = model.iconCode;
         return conditions;
     }
     public WeatherForecastDay[] getForecastDays () throws Exception {
@@ -40,6 +43,8 @@ public class WeatherDataManager {
             forecastDays[i] = new WeatherForecastDay();
             forecastDays[i].narrative = dailyForecastModel.narrative[i];
             forecastDays[i].daypartName = dailyForecastModel.dayOfWeek[i];
+            forecastDays[i].lowTemp = dailyForecastModel.temperatureMin[i];
+            forecastDays[i].highTemp = dailyForecastModel.temperatureMax[i] != null ? dailyForecastModel.temperatureMax[i] : Integer.MIN_VALUE;
         }
         return forecastDays;
     }

@@ -6,5 +6,5 @@ public class WeatherConditions {
     public String windDirection; // N, S, E, W...
     public Integer windMph;
     public String conditionText;
-    public String conditionIcon; // character per the font we're using
+    public Integer conditionIcon;
 }

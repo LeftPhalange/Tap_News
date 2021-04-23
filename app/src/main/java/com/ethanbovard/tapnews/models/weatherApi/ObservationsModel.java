@@ -13,4 +13,5 @@ public class ObservationsModel {
     public int windSpeed;
     public int temperatureDewPoint;
     public int temperatureFeelsLike;
+    public Integer iconCode;
 }

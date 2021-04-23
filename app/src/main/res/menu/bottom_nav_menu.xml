@@ -12,9 +12,9 @@
         android:title="@string/title_weather" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/navigation_traffic"
+        android:icon="@drawable/ic_baseline_traffic_24"
+        android:title="@string/traffic" />
 
     <item
         android:id="@+id/navigation_settings"

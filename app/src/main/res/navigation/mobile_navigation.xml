@@ -18,8 +18,15 @@
         tools:layout="@layout/fragment_weather" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_traffic"
         android:name="com.ethanbovard.tapnews.ui.traffic.TrafficFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:label="@string/traffic"
+        tools:layout="@layout/fragment_traffic" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.ethanbovard.tapnews.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/settings_fragment" />
+
 </navigation>

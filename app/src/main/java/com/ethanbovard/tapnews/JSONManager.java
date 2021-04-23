@@ -24,7 +24,9 @@ public class JSONManager {
         String json = future.get();
         executor.shutdown();
         Log.v("JSONManager", json);
-        return new Gson().fromJson(json, cl);
+        Gson gson = new Gson();
+        gson.serializeNulls();
+        return gson.fromJson(json, cl);
     }
     public static String DownloadStringFromURL (URL url) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
