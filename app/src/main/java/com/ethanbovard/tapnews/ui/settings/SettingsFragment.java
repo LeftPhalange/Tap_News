@@ -25,7 +25,9 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.settings_fragment, container, false);
+        View root = inflater.inflate(R.layout.settings_fragment, container, false);
+
+        return root;
     }
 
     @Override
@@ -34,5 +36,4 @@ public class SettingsFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
         // TODO: Use the ViewModel
     }
-
 }

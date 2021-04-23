@@ -26,6 +26,59 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Customize the Tap News experience." />
+
+        <TextView
+            android:id="@+id/weatherTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:text="Weather"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/weatherDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change your location."
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"/>
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Use my physical location" />
+
+        <Switch
+            android:id="@+id/switch2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Use my custom location\n(current: Atlanta, GA)" />
+
+        <LinearLayout
+            android:id="@+id/customLocationStack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/localityTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="Enter city name and/or state"
+                android:inputType="textPostalAddress"
+                android:textSize="14sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

@@ -1,5 +1,6 @@
 package com.ethanbovard.tapnews.ui.weather;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -7,19 +8,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ethanbovard.tapnews.MainActivity;
 import com.ethanbovard.tapnews.R;
 import com.ethanbovard.tapnews.Util;
+import com.ethanbovard.tapnews.ui.settings.SettingsFragment;
 
 public class WeatherFragment extends Fragment {
 
@@ -35,6 +40,17 @@ public class WeatherFragment extends Fragment {
         final TextView expectTempLabel = root.findViewById(R.id.expectTempLabel);
         final RecyclerView daypartView = root.findViewById(R.id.daypartView);
         final ImageView conditionIconView = root.findViewById(R.id.conditionIconView);
+        final TextView changeLocationButton = root.findViewById(R.id.changeLocationButton);
+        // Set "change location" button callback
+        changeLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v.getContext() instanceof MainActivity) {
+                    Log.v("WeatherFragment", "Switching to Settings...");
+                    ((MainActivity) v.getContext()).changeToFragment(R.id.navigation_settings);
+                }
+            }
+        });
         weatherViewModel.updateViewModel(root.getContext());
         weatherViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

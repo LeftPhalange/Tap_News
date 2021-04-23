@@ -1,8 +1,10 @@
 package com.ethanbovard.tapnews.weather;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.ethanbovard.tapnews.JSONManager;
+import com.ethanbovard.tapnews.Util;
 import com.ethanbovard.tapnews.models.weatherApi.DailyForecastModel;
 import com.ethanbovard.tapnews.models.weatherApi.DaypartModel;
 import com.ethanbovard.tapnews.models.weatherApi.ObservationsModel;
@@ -21,10 +23,10 @@ public class WeatherDataManager {
     private String API_KEY = "6532d6454b8aa370768e63d6ba5a832e";
     private String baseObsUrl = "https://api.weather.com/v3/wx/observations/current?geocode=%s&format=json&units=e&language=en-US&apiKey=%s";
     private String baseDailyUrl = "https://api.weather.com/v3/wx/forecast/daily/7day?geocode=%s&format=json&units=e&language=en-US&apiKey=%s";
-    public WeatherDataManager(double[] coordinates) throws Exception {
+    public WeatherDataManager(double[] coordinates, Context context) throws Exception {
         Log.v(TAG, "started WeatherDataManager");
         WeatherConditions conditions = populateWeatherConditions();
-        displayLocation = new Location("--", conditions, null);
+        displayLocation = new Location(Util.getLocalityFromCoords(coordinates[0], coordinates[1], context), conditions, null);
     }
     public WeatherConditions populateWeatherConditions () throws Exception {
         WeatherConditions conditions = new WeatherConditions();

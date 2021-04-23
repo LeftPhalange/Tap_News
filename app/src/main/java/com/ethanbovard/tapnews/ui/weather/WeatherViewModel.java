@@ -16,6 +16,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.ethanbovard.tapnews.MainActivity;
 import com.ethanbovard.tapnews.Util;
 import com.ethanbovard.tapnews.models.weatherApi.DailyForecastModel;
 import com.ethanbovard.tapnews.weather.WeatherConditions;
@@ -59,28 +60,18 @@ public class WeatherViewModel extends ViewModel {
             narrativeData = new MutableLiveData<>();
             iconFileName = new MutableLiveData<>();
             Log.v(tag, "Is context null: " + context);
-            lManager.getLocationResult().addOnSuccessListener(new OnSuccessListener<Location>() {
-                @Override
-                public void onSuccess(Location location) {
-                    if (location != null) {
-                        process(location);
-                    }
-                }
-            });
+            process ();
         }
         catch (Exception exc) {
             Log.e(tag, "Exception caught while gathering weather information");
         }
     }
 
-    public void process (Location location) {
+    public void process () {
         WeatherDataManager weatherDataManager = null;
         WeatherForecastDay[] days = null;
-        Log.v(tag, "Is location null: " + (location == null));
         try {
-            double longitude = location != null ? location.getLongitude() : -84.39;
-            double latitude = location != null ? location.getLatitude() : 33.74;
-            weatherDataManager = new WeatherDataManager(new double[]{latitude, longitude});
+            weatherDataManager = ((MainActivity)context).getWeatherDataManager();
             days = weatherDataManager.getForecastDays();
         }
         catch (Exception exc) {
@@ -96,8 +87,8 @@ public class WeatherViewModel extends ViewModel {
                 Log.v(tag, "Adding narrative for " + narratives[i].daypartName);
             }
             expectMsg.setValue(Util.returnTempDay(days[0].highTemp, days[0].lowTemp));
-            cityText.setValue(lManager.getLocality());
             WeatherConditions conditions = weatherDataManager.displayLocation.getWxConditions();
+            cityText.setValue(weatherDataManager.displayLocation.displayName);
             conditionText.setValue(conditions.temperature.toString() + '°');
             narrativeData.setValue(narratives);
             iconFileName.setValue(Util.returnFileName(conditions.conditionIcon));
