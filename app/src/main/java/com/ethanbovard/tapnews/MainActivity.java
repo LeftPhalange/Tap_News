@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
                         TextView navToWeatherButton = findViewById(R.id.navToWeatherButton);
                         navToWeatherButton.setText(Util.returnWeatherButtonText(weatherDataManager));
                     }
+                    else {
+                        createWeatherDataManager(33.74, -84.39); // provide default location
+                        TextView navToWeatherButton = findViewById(R.id.navToWeatherButton);
+                        navToWeatherButton.setText(Util.returnWeatherButtonText(weatherDataManager));
+                    }
                 }
             });
         }
