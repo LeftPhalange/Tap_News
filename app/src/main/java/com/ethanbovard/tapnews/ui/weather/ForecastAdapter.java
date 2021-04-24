@@ -33,7 +33,6 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
         this.narrativeSet = narrativeSet;
         views = new ArrayList<View>();
     }
-
     @Override
     public void onBindViewHolder(@NonNull ForecastAdapter.ViewHolder holder, int position) {
         Narrative narrative = narrativeSet[position];
@@ -45,7 +44,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return narrativeSet.length;
+        return narrativeSet != null ? narrativeSet.length : 0;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

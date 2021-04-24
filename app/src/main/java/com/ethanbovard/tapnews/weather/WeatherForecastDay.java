@@ -4,4 +4,6 @@ package com.ethanbovard.tapnews.weather;
 public class WeatherForecastDay {
     public String narrative;
     public String daypartName;
+    public int highTemp;
+    public int lowTemp;
 }

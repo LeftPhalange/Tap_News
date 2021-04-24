@@ -6,17 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="208dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="JANUARY 1, 1970"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/greetingTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome back"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/navToWeatherButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#2196F3"
+                android:textStyle="bold"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/latestHeadlinesTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingBottom="8dp"
+            android:text="Latest headlines"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/articlesView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

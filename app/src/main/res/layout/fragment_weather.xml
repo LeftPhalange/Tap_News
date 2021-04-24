@@ -23,7 +23,7 @@
             android:id="@+id/cityLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Atlanta, GA"
+            android:text="--"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -34,16 +34,25 @@
 
             <TextView
                 android:id="@+id/rightNowLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="289dp"
                 android:layout_height="wrap_content"
                 android:text="Right now"
                 android:textColor="@color/black"
                 android:textSize="24dp"
                 android:textStyle="bold" />
 
+            <ImageView
+                android:id="@+id/conditionIconView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:src="@drawable/icon44" />
+
             <TextView
                 android:id="@+id/conditionTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="27dp"
                 android:text="--°"
                 android:textAlignment="textEnd"
@@ -53,20 +62,77 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/next7DayLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="24dp"
-            android:text="Next 7 days"
-            android:textColor="@android:color/secondary_text_light"
-            android:textSize="24dp"
-            android:textStyle="bold" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/daypartView"
+            android:id="@+id/expectTempLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical" />
+            android:text="--" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/changeLocationButton"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/change_your_location"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#2196F3" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/nowcastHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8sp"
+                    android:layout_weight="0"
+                    android:text="This hour"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/nowcastText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="--" />
+
+                <TextView
+                    android:id="@+id/next7DayLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6sp"
+                    android:text="Next 7 days"
+                    android:textColor="@android:color/secondary_text_light"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/daypartView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

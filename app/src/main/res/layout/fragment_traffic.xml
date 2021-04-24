@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.traffic.TrafficFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="136dp">
+
+        <TextView
+            android:id="@+id/trafficTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Check traffic"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/expectedTimeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Traffic conditions in the area." />
+
+        <fragment android:id="@+id/autocomplete_fragment_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            />
+
+        <fragment android:id="@+id/autocomplete_fragment_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            />
+
+        <Button
+            android:id="@+id/start_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12sp"
+            android:layout_marginBottom="12sp"
+            android:text="Start commute on Google Maps" />
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/google_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
