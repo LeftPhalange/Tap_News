@@ -173,7 +173,6 @@ public class TrafficFragment extends Fragment {
             }
             @Override
             public void onError(@NotNull Status status) {
-                // TODO: Handle the error.
                 Log.i("TrafficFragment", "An error occurred: " + status);
             }
         });

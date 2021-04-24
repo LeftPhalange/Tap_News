@@ -157,6 +157,5 @@ public class SettingsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
-        // TODO: Use the ViewModel
     }
 }
