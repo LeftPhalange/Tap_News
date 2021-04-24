@@ -41,6 +41,7 @@ public class WeatherFragment extends Fragment {
         final RecyclerView daypartView = root.findViewById(R.id.daypartView);
         final ImageView conditionIconView = root.findViewById(R.id.conditionIconView);
         final TextView changeLocationButton = root.findViewById(R.id.changeLocationButton);
+        final TextView nowcastText = root.findViewById(R.id.nowcastText);
         // Set "change location" button callback
         changeLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +71,13 @@ public class WeatherFragment extends Fragment {
             @Override
             public void onChanged(@Nullable String s) {
                 expectTempLabel.setText(s);
+            }
+        });
+        // for nowcast
+        weatherViewModel.getNowcast().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                nowcastText.setText(s);
             }
         });
         // for drawable representing the icon

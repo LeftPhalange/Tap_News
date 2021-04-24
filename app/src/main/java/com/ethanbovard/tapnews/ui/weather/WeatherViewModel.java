@@ -38,6 +38,7 @@ public class WeatherViewModel extends ViewModel {
     private MutableLiveData<Narrative[]> narrativeData;
     private MutableLiveData<String> expectMsg;
     private MutableLiveData<String> iconFileName;
+    private MutableLiveData<String> nowcastText;
     private Context context;
     String tag = "WeatherViewModel";
 
@@ -55,6 +56,7 @@ public class WeatherViewModel extends ViewModel {
             conditionText = new MutableLiveData<>();
             narrativeData = new MutableLiveData<>();
             iconFileName = new MutableLiveData<>();
+            nowcastText = new MutableLiveData<>();
             Log.v(tag, "Is context null: " + context);
             process ();
         }
@@ -87,6 +89,7 @@ public class WeatherViewModel extends ViewModel {
             cityText.setValue(weatherDataManager.displayLocation.displayName);
             conditionText.setValue(conditions.temperature.toString() + '°');
             narrativeData.setValue(narratives);
+            nowcastText.setValue(weatherDataManager.displayLocation.nowcast);
             iconFileName.setValue(Util.returnFileName(conditions.conditionIcon));
         }
     }
@@ -105,5 +108,8 @@ public class WeatherViewModel extends ViewModel {
     }
     public LiveData<String> getIconFileName() {
         return iconFileName;
+    }
+    public LiveData<String> getNowcast() {
+        return nowcastText;
     }
 }

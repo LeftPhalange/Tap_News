@@ -7,6 +7,7 @@ import com.ethanbovard.tapnews.JSONManager;
 import com.ethanbovard.tapnews.Util;
 import com.ethanbovard.tapnews.models.weatherApi.DailyForecastModel;
 import com.ethanbovard.tapnews.models.weatherApi.DaypartModel;
+import com.ethanbovard.tapnews.models.weatherApi.NowcastModel;
 import com.ethanbovard.tapnews.models.weatherApi.ObservationsModel;
 
 import org.jetbrains.annotations.Nullable;
@@ -24,12 +25,23 @@ public class WeatherDataManager {
     private String API_KEY = "6532d6454b8aa370768e63d6ba5a832e";
     private String baseObsUrl = "https://api.weather.com/v3/wx/observations/current?geocode=%s&format=json&units=e&language=en-US&apiKey=%s";
     private String baseDailyUrl = "https://api.weather.com/v3/wx/forecast/daily/7day?geocode=%s&format=json&units=e&language=en-US&apiKey=%s";
+    private String baseNowcastUrl = "https://api.weather.com/v1/geocode/%f/%f/forecast/nowcast.json?apiKey=6532d6454b8aa370768e63d6ba5a832e&language=en-US&units=e";
     public WeatherDataManager(double[] coordinates, Context context) throws Exception {
         Log.v(TAG, "started WeatherDataManager");
         this.coordinates = coordinates;
         Log.v(TAG, String.format("Getting weather information from coordinates %s...", Arrays.toString(coordinates)));
         WeatherConditions conditions = populateWeatherConditions();
-        displayLocation = new Location(Util.getLocalityFromCoords(coordinates[0], coordinates[1], context), conditions, null);
+        String nowcast = populateNowcast();
+        displayLocation = new Location(Util.getLocalityFromCoords(coordinates[0], coordinates[1], context), conditions, null, nowcast);
+    }
+    public String populateNowcast () {
+        NowcastModel nowcastModel = null;
+        try {
+            nowcastModel = (NowcastModel) JSONManager.Deserialize(new URL(String.format(baseNowcastUrl, coordinates[0], coordinates[1])), NowcastModel.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return nowcastModel.forecast.narrative_32char;
     }
     public WeatherConditions populateWeatherConditions () throws Exception {
         WeatherConditions conditions = new WeatherConditions();
