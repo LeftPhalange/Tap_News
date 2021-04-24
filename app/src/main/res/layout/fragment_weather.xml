@@ -93,7 +93,7 @@
             android:paddingTop="6sp"
             android:text="Next 7 days"
             android:textColor="@android:color/secondary_text_light"
-            android:textSize="24dp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
