@@ -14,10 +14,11 @@ import org.jetbrains.annotations.Nullable;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 
 public class WeatherDataManager {
     public Location displayLocation;
-    private static final String TAG = "dataManager";
+    private static final String TAG = "WeatherDataManager";
     double[] coordinates = new double[] { 40.7128, -74.0060 }; // default is New York City
     // i.e. new Integer[] { 33.74, -84.39 } for coordinates
     private String API_KEY = "6532d6454b8aa370768e63d6ba5a832e";
@@ -25,6 +26,8 @@ public class WeatherDataManager {
     private String baseDailyUrl = "https://api.weather.com/v3/wx/forecast/daily/7day?geocode=%s&format=json&units=e&language=en-US&apiKey=%s";
     public WeatherDataManager(double[] coordinates, Context context) throws Exception {
         Log.v(TAG, "started WeatherDataManager");
+        this.coordinates = coordinates;
+        Log.v(TAG, String.format("Getting weather information from coordinates %s...", Arrays.toString(coordinates)));
         WeatherConditions conditions = populateWeatherConditions();
         displayLocation = new Location(Util.getLocalityFromCoords(coordinates[0], coordinates[1], context), conditions, null);
     }

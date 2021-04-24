@@ -2,15 +2,13 @@ package com.ethanbovard.tapnews;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.location.Geocoder;
 import android.util.Log;
 
-import org.jetbrains.annotations.Nullable;
+import com.ethanbovard.tapnews.weather.WeatherDataManager;
 
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -27,6 +25,15 @@ public class Util {
         else {
             return "Good evening, %s";
         }
+    }
+    public String returnCompact (String str) {
+        return str.replace(" ", "+");
+    }
+    public static String returnWeatherButtonText (WeatherDataManager weatherDataManager) {
+        Integer temp = weatherDataManager.displayLocation.getWxConditions().temperature;
+        String conditions = weatherDataManager.displayLocation.getWxConditions().conditionText;
+        String locality = weatherDataManager.displayLocation.displayName;
+        return String.format("%d° and %s in %s. ›", temp, conditions, locality);
     }
     public static String returnTempDay (int highTemp, int lowTemp) {
         boolean isFirstDayNull = (highTemp == Integer.MIN_VALUE);

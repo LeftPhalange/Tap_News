@@ -23,30 +23,29 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editTextStarting"
+        <TextView
+            android:id="@+id/expectedTimeLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12sp"
-            android:ems="10"
-            android:hint="Starting address"
-            android:inputType="textPersonName"
-            android:text="" />
+            android:text="Traffic conditions in the area." />
 
-        <EditText
-            android:id="@+id/editTextDestination"
+        <fragment android:id="@+id/autocomplete_fragment_start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12sp"
-            android:ems="10"
-            android:hint="Destination address"
-            android:inputType="textPersonName"
-            android:text="" />
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            />
+
+        <fragment android:id="@+id/autocomplete_fragment_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            />
 
         <Button
             android:id="@+id/start_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="12sp"
             android:layout_marginBottom="12sp"
             android:text="Start commute on Google Maps" />

@@ -1,6 +1,7 @@
 package com.ethanbovard.tapnews.ui.home;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -12,21 +13,18 @@ import com.ethanbovard.tapnews.weather.WeatherDataManager;
 
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> weatherLabelText;
+    public MutableLiveData<String> weatherLabelText;
 
     public HomeViewModel() {
-        weatherLabelText = new MutableLiveData<>();
+        weatherLabelText = new MutableLiveData<String>();
     }
 
-    public void updateViewModel (MainActivity mainActivity) {
-        WeatherDataManager manager = mainActivity.getWeatherDataManager();
-        if (manager != null) {
-            String locality = manager.displayLocation.displayName;
-            WeatherConditions conditions = manager.displayLocation.getWxConditions();
-            String weatherCondition = conditions.conditionText;
-            Integer temp = conditions.temperature;
-            weatherLabelText.setValue(String.format("%d° and %s in %s. ›", temp, weatherCondition, locality));
+    public void setWeatherLabelText (String locality, String conditions, Integer temp) {
+        if (weatherLabelText == null) {
+            weatherLabelText = new MutableLiveData<>();
         }
+        Log.v("HomeViewModel", "Weather label changed.");
+        weatherLabelText.setValue (String.format("%d° and %s in %s. ›", temp, conditions, locality));
     }
 
     public LiveData<String> getWeatherLabelText() {

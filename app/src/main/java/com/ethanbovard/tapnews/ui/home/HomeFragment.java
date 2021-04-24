@@ -1,7 +1,9 @@
 package com.ethanbovard.tapnews.ui.home;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +23,7 @@ import com.ethanbovard.tapnews.MainActivity;
 import com.ethanbovard.tapnews.R;
 import com.ethanbovard.tapnews.Util;
 import com.ethanbovard.tapnews.ui.weather.ForecastAdapter;
+import com.ethanbovard.tapnews.weather.WeatherConditions;
 import com.ethanbovard.tapnews.weather.WeatherDataManager;
 
 import java.util.Calendar;
@@ -34,29 +38,36 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         navToWeatherButton = root.findViewById(R.id.navToWeatherButton);
-        MainActivity mainActivityContext = ((MainActivity)root.getContext());
+        Observer<String> navButtonObserver = new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                navToWeatherButton.setText(s);
+            }
+        };
+        MainActivity mainActivityContext = (MainActivity)getActivity();
         navToWeatherButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mainActivityContext.changeToFragment(R.id.navigation_weather);
             }
         });
-        homeViewModel.getWeatherLabelText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                navToWeatherButton.setText(s);
-            }
-        });
-        homeViewModel.updateViewModel(mainActivityContext);
+        homeViewModel.getWeatherLabelText().observe(getViewLifecycleOwner(), navButtonObserver);
         return root;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        // Set up the weather link
+        WeatherDataManager weatherDataManager = ((MainActivity)view.getContext()).getWeatherDataManager();
+        if (weatherDataManager != null) {
+            Log.v("HomeViewModel", "Got a valid WeatherDataManager");
+            homeViewModel.setWeatherLabelText(weatherDataManager.displayLocation.displayName, weatherDataManager.displayLocation.getWxConditions().conditionText,
+                    weatherDataManager.displayLocation.getWxConditions().temperature);
+            ((TextView) getView().findViewById(R.id.navToWeatherButton)).setText(homeViewModel.getWeatherLabelText().getValue());
+        }
         // Set the date
         dateTextView = (TextView) getView().findViewById(R.id.dateTextView);
         dateTextView.setText(Util.getDateString());

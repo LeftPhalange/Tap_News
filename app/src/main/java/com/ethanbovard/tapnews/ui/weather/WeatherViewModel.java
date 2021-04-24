@@ -38,9 +38,6 @@ public class WeatherViewModel extends ViewModel {
     private MutableLiveData<Narrative[]> narrativeData;
     private MutableLiveData<String> expectMsg;
     private MutableLiveData<String> iconFileName;
-    private FusedLocationProviderClient fusedLocationClient;
-    private com.ethanbovard.tapnews.LocationManager lManager;
-    private final int REQUEST_LOCATION = 2;
     private Context context;
     String tag = "WeatherViewModel";
 
@@ -51,7 +48,6 @@ public class WeatherViewModel extends ViewModel {
     public void updateViewModel(Context context) {
         // set up LocationManager
         this.context = context;
-        lManager = new com.ethanbovard.tapnews.LocationManager(context);
         try {
             // Prepare view model fields
             expectMsg = new MutableLiveData<>();

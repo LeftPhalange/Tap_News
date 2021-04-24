@@ -14,67 +14,56 @@ import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.CancellationToken;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 public class LocationManager {
     private FusedLocationProviderClient fusedLocationClient;
-    private Location location;
+    private Location currentLocation;
     private Context context;
     final int REQUEST_LOCATION = 2;
+
     public LocationManager(Context context) {
         this.context = context;
+        Log.i("LocationManager", "started");
         // Get location
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             // Check Permissions Now
-            ActivityCompat.requestPermissions((Activity)context,
+            ActivityCompat.requestPermissions((Activity) context,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_LOCATION);
         } else {
             // permission has been granted, continue as usual
-            Task<Location> locationResult = LocationServices
-                    .getFusedLocationProviderClient((Activity)context)
-                    .getLastLocation();
-        }
-    }
-    @SuppressLint("MissingPermission")
-    public Task<Location> getLocationResult () {
-        return fusedLocationClient.getLastLocation()
-                .addOnSuccessListener((Activity) context, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            updateLocation(location);
-                        }
-                        else {
-                            location = null;
-                        }
+            fusedLocationClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    if (location != null) {
+                        currentLocation = location;
                     }
-                });
-    }
-    public void updateLocation (Location location) {
-        this.location = location;
-    }
-    public Location getLocation () {
-        return location;
-    }
-    public String getLocality() {
-        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-        String locationName = "";
-        try {
-            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-            locationName = addresses.get(0).getLocality();
+                }
+            });
         }
-        catch (IOException exc) {
-            Log.e("LocationManager", "IOException caught while trying to get location");
-        }
-        return locationName;
+    }
+
+    @SuppressLint("MissingPermission")
+    public Task<Location> getLocationResult(Context context) {
+        return fusedLocationClient.getLastLocation();
+    }
+
+    public void updateLocation(Location location) {
+        this.currentLocation = location;
+    }
+
+    public Location getLocation() {
+        return currentLocation;
     }
 }
