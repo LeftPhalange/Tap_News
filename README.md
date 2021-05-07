@@ -3,8 +3,15 @@ Project done for Mobile App Development course at Georgia State University, buil
 
 ## What's supported
 * News
+  * 📰 Receives latest headlines
 * Weather (from The Weather Company's API)
-* Traffic (Places, Map and Autocomplete Support Fragments)
+  * ⛅ Provides current conditions
+  * 🕐 A hourly summary
+  * 📆 7-day forecast narratives (API key needed)
+* Traffic (uses Google Cloud)
+  * 📝 Uses autocompletion for address input
+  * 🗺️ Map that centers based on physical GPS location
+  * 📍 Calculates distance between two points
 
 All three facets of the app require API keys for the respective service. Please refer to the "How do I build?" section below.
 
