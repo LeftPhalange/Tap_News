@@ -27,3 +27,6 @@ Before you build the app, be sure to provide API keys of your own:
 
 ## Known issues with the current iteration
 * Weather and Settings are unusable due to improper permissions checking for the first run
+
+## Other stuff
+Some of us have used external resources (i.e. YouTube, Stack Overflow, etc.) to build this app. If any of this content was derivative somewhere where credit should be due -- please let me know so I can give credit. You can reach me at everblackx@gmail.com for such inquiries or otherwise.
