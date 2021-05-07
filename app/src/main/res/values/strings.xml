@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Tap News</string>
+    <string name="title_home">Tap News</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_weather">Weather</string>
+    <string name="traffic">Traffic</string>
+    <string name="settings">Settings</string>
+    <string name="geocode_weather">PHYSICAL_LOCATION</string>
+    <string name="start_commute_key">Atlanta, Georgia</string>
+    <string name="start_commute_geocode_key">33.74,-84.39</string>
+    <string name="destination_commute_key">Macon, Georgia</string>
+    <string name="destination_commute_geocode_key">32.50,-83.38</string>
+    <string name="change_your_location">Change your location ›</string>
+    <!-- TODO: Add API keys -->
+    <string name="places_api_key">PLACES_API_KEY_HERE</string>
+    <string name="news_api_key">NEWS_API_KEY_HERE</string>
+</resources>

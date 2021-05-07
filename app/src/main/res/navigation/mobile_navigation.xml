@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.ethanbovard.tapnews.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_weather"
+        android:name="com.ethanbovard.tapnews.ui.weather.WeatherFragment"
+        android:label="@string/title_weather"
+        tools:layout="@layout/fragment_weather" />
+
+    <fragment
+        android:id="@+id/navigation_traffic"
+        android:name="com.ethanbovard.tapnews.ui.traffic.TrafficFragment"
+        android:label="@string/traffic"
+        tools:layout="@layout/fragment_traffic" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.ethanbovard.tapnews.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/settings_fragment" />
+
+</navigation>
