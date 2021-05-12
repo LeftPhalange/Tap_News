@@ -15,6 +15,10 @@ Project done for Mobile App Development course at Georgia State University, buil
 
 All three facets of the app require API keys for the respective service. Please refer to the "How do I build?" section below.
 
+## Screenshots of Tap News
+### (News, Weather, Traffic)
+![image](https://user-images.githubusercontent.com/34446470/117905974-0c8dd580-b2a2-11eb-9200-90b678a58ad4.png) ![image](https://user-images.githubusercontent.com/34446470/117905983-10b9f300-b2a2-11eb-8ae5-4328b9f8aaa3.png) ![image](https://user-images.githubusercontent.com/34446470/117905989-144d7a00-b2a2-11eb-9e82-13c14e60cf34.png)
+
 ## Cool! How do I build?
 Open the project in Android Studio after cloning the repo using `git clone`. This app was tested in Android Studio 4.1.2 with the Pixel 3A emulator and API Level 30.
 
