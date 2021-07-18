@@ -31,7 +31,7 @@ Before you build the app, be sure to provide API keys of your own:
   - news_api_key: Replace string with API key for https://api.currentsapi.services
 
 ## Thanks to the following people for making this project possible:
-* Ethan Bovard (full-stack, weather page)
+* Ethan Bovard (team lead, weather page, other incremental improvements)
 * Matthew Johnson (traffic page)
 * Solumtochukwu Orji (news page)
 * Alexandra Ochoa (frontend designer)
