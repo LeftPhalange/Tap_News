@@ -20,7 +20,7 @@ public class WeatherDataManager {
     private final String API_KEY = ""; // TODO: Add API key for api.weather.com
     private final String baseObsUrl = "https://api.weather.com/v3/wx/observations/current?geocode=%s&format=json&units=e&language=en-US&apiKey=%s";
     private final String baseDailyUrl = "https://api.weather.com/v3/wx/forecast/daily/7day?geocode=%s&format=json&units=e&language=en-US&apiKey=%s";
-    private final String baseNowcastUrl = "https://api.weather.com/v1/geocode/%f/%f/forecast/nowcast.json?apiKey=6532d6454b8aa370768e63d6ba5a832e&language=en-US&units=e";
+    private final String baseNowcastUrl = "https://api.weather.com/v1/geocode/%f/%f/forecast/nowcast.json?apiKey=%s&language=en-US&units=e"; // change API key here before compiling
     public WeatherDataManager(double[] coordinates, Context context) throws Exception {
         Log.v(TAG, "started WeatherDataManager");
         this.coordinates = coordinates;
